@@ -69,11 +69,4 @@
       transform: translateY(-1rem);
     }
   }
-
-  @media (max-width: 640px) {
-    .responsive-table {
-      overflow-x: auto;
-      display: block;
-    }
-  }
 }
