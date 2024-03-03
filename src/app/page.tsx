@@ -1,4 +1,3 @@
-import Navbar from "../components/navbar";
 import {
     Table,
     TableBody,
@@ -11,10 +10,6 @@ import {
 import {
     Card,
     CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card"
 
 
@@ -35,22 +30,25 @@ export default function Home() {
 
     return (
         <main className="min-h-screen flex flex-col items-center justify-between px-12 py-12">
-            <div className="flex flex-col text-center gap-5">
-                <h2 className="text-5xl">
-                    Welcome to Reign
+            <div className="flex flex-col text-center gap-5 pb-12">
+                <h2 className="text-5xl font-extrabold tracking-wider">
+                    Welcome to <span className="text-primary">Reign.</span>
                 </h2>
-                <p>
-                    Compete monthly in our esports league. Match against peers, climb the leaderboard, and win rewards. Ready for the challenge?
+                <p className="text-neutral-400">
+                    Compete monthly in our esports league.<br/>
+                    Match against peers, climb the leaderboard, and win rewards. <br/>
+                    Ready for the challenge?
                 </p>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-center w-full gap-12">
-                <div className="flex-1 text-center">
+                <div className="basis-1/3 text-wrap">
                     <h2 className="text-2xl font-bold">Competition for all</h2>
-                    <p>
+                    <br/>
+                    <p className="text-neutral-400">
                         Leaderboards are updated automatically after each match. Compete against your friends and other players in the community.
                     </p>
                 </div>
-                <div className="flex-1 overflow-x-auto">
+                <div className="basis-2/3 overflow-x-auto">
                     <Card>
                         <CardContent>
                             <Table>
@@ -82,7 +80,7 @@ export default function Home() {
                 </div>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-center w-full gap-12 mt-12">
-                <div className="flex-1 overflow-x-auto">
+                <div className="basis-2/3 overflow-x-auto">
                     <Card>
                         <CardContent>
                             <Table>
@@ -112,9 +110,10 @@ export default function Home() {
                         </CardContent>
                     </Card>
                 </div>
-                <div className="flex-1 text-center">
+                <div className="basis-1/3 text-left">
                     <h2 className="text-2xl font-bold">Competition for all</h2>
-                    <p>
+                    <br/>
+                    <p className="text-neutral-400">
                         Leaderboards are updated automatically after each match. Compete against your friends and other players in the community.
                     </p>
                 </div>
