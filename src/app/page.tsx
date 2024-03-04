@@ -38,13 +38,13 @@ export default function Home() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const threshold = 20; // Amount of pixels to scroll before updating stats
+            const threshold = 20;
 
             if (window.scrollY - lastScrollY.current > threshold) {
                 setYouStats(prevStats => {
                     const newGamesPlayed = prevStats.gamesPlayed + 1;
                     const newWins = prevStats.wins + 1;
-                    const newKills = prevStats.kills + getRandomInt(5); // Increment kills by 0-4
+                    const newKills = prevStats.kills + getRandomInt(5);
                     const newTop5 = prevStats.top5 + 1;
 
                     // Ensure the values do not exceed their max
@@ -69,10 +69,9 @@ export default function Home() {
         name: "You",
         ...youStats
     }].sort((a, b) => {
-        // Sort by wins, then by kills if wins are equal
         if (a.wins !== b.wins) return b.wins - a.wins;
         if (a.kills !== b.kills) return b.kills - a.kills;
-        return b.top5 - a.top5; // If wins and kills are equal, sort by top 5 placements
+        return b.top5 - a.top5;
     });
 
     return (
