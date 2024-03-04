@@ -1,16 +1,10 @@
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
+'use client';
 
-import {
-    Card,
-    CardContent,
-} from "@/components/ui/card"
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow,} from "@/components/ui/table"
+
+import {Card, CardContent, CardHeader,} from "@/components/ui/card"
+import Image from "next/image";
+import React, {useEffect, useRef, useState} from "react";
 
 
 function getRandomInt(max: number) {
@@ -25,97 +19,122 @@ export default function Home() {
         "MansNotHot",
         "LeLouch",
         "Oakley",
-        "Watto"
+        "Watto",
     ];
 
+    const [players, setPlayers] = useState(placeholderPlayers.concat(["You"]));
+    const [youStats, setYouStats] = useState({ gamesPlayed: 0, wins: 0, kills: 0, top5: 0 });
+
+    const lastScrollY = useRef(0);
+    const [triggerUpdate, setTriggerUpdate] = useState(false);
+
+    const otherPlayers = [
+        { name: "Notice Me Senpai", gamesPlayed: 10, wins: 8, kills: 35, top5: 7 },
+        { name: "Biscuit", gamesPlayed: 10, wins: 6, kills: 30, top5: 8 },
+        { name: "MansNotHot", gamesPlayed: 10, wins: 4, kills: 20, top5: 1 },
+        { name: "Lelouch", gamesPlayed: 10, wins: 4, kills: 45, top5: 4 },
+        { name: "Oakley", gamesPlayed: 10, wins: 3, kills: 12, top5: 3 },
+    ];
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const threshold = 20; // Amount of pixels to scroll before updating stats
+
+            if (window.scrollY - lastScrollY.current > threshold) {
+                setYouStats(prevStats => {
+                    const newGamesPlayed = prevStats.gamesPlayed + 1;
+                    const newWins = prevStats.wins + 1;
+                    const newKills = prevStats.kills + getRandomInt(5); // Increment kills by 0-4
+                    const newTop5 = prevStats.top5 + 1;
+
+                    // Ensure the values do not exceed their max
+                    return {
+                        gamesPlayed: Math.min(newGamesPlayed, 10),
+                        wins: Math.min(newWins, 10),
+                        kills: Math.min(newKills, 50),
+                        top5: Math.min(newTop5, 10),
+                    };
+                });
+
+                lastScrollY.current = window.scrollY;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const sortedPlayers = [...otherPlayers, {
+        name: "You",
+        ...youStats
+    }].sort((a, b) => {
+        // Sort by wins, then by kills if wins are equal
+        if (a.wins !== b.wins) return b.wins - a.wins;
+        if (a.kills !== b.kills) return b.kills - a.kills;
+        return b.top5 - a.top5; // If wins and kills are equal, sort by top 5 placements
+    });
+
     return (
-        <main className="min-h-screen flex flex-col items-center justify-between px-12 py-12">
-            <div className="flex flex-col text-center gap-5 pb-12">
+        <main className="min-h-screen p-12">
+            <div className="text-center mb-12">
                 <h2 className="text-5xl font-extrabold tracking-wider">
                     Welcome to <span className="text-primary">Reign.</span>
                 </h2>
-                <p className="text-neutral-400">
-                    Compete monthly in our esports league.<br/>
-                    Match against peers, climb the leaderboard, and win rewards. <br/>
-                    Ready for the challenge?
-                </p>
             </div>
-            <div className="flex flex-col lg:flex-row lg:items-center w-full gap-12">
-                <div className="basis-1/3 text-wrap">
-                    <h2 className="text-2xl font-bold">Competition for all</h2>
-                    <br/>
-                    <p className="text-neutral-400">
-                        Leaderboards are updated automatically after each match. Compete against your friends and other players in the community.
-                    </p>
-                </div>
-                <div className="basis-2/3 overflow-x-auto">
-                    <Card>
+            <div className="max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    {/* Bento Box Item 1 - Description */}
+                    <Card className="col-span-1 shadow-lg shadow-secondary">
+                        <CardHeader className="text-2xl font-bold text-primary text-center md:text-left">
+                            Payouts you can trust
+                        </CardHeader>
                         <CardContent>
+                            <div>
+                                <p className="text-neutral-400 text-center md:text-left">
+                                    League winnings are paid out within 72 hours of the end of the league via PayPal.
+                                </p>
+                                <Image src="/PaypalLogo.png" alt="Paypal Logo"
+                                       className="mt-8 mx-auto"
+                                       width={100}
+                                       height={24}/>
+                            </div>
+                        </CardContent>
+                    </Card>
+
+                    {/* Bento Box Item 2 - Leaderboard Card */}
+                    <Card className="shadow-xl shadow-secondary col-span-1 sm:col-span-2 lg:col-span-3">
+                        <CardContent>
+                        <div className="overflow-x-auto">
                             <Table>
                                 <TableHeader>
                                     <TableRow>
-                                        <TableHead className="w-[100px] text-destructive">Pos.</TableHead>
-                                        <TableHead className="text-destructive">IGN</TableHead>
-                                        <TableHead className="text-destructive">Games Played</TableHead>
-                                        <TableHead className="text-destructive">Wins</TableHead>
-                                        <TableHead className="text-destructive">Kills</TableHead>
-                                        <TableHead className="text-right text-destructive">Top 5</TableHead>
+                                        <TableHead className="w-[100px] text-primary">Pos.</TableHead>
+                                        <TableHead className="text-primary">IGN</TableHead>
+                                        <TableHead className="text-primary">Games Played</TableHead>
+                                        <TableHead className="text-primary">Wins</TableHead>
+                                        <TableHead className="text-primary">Kills</TableHead>
+                                        <TableHead className="text-right text-primary">Top 5</TableHead>
                                     </TableRow>
                                 </TableHeader>
                                 <TableBody>
-                                    {placeholderPlayers.map((player, index) => (
-                                        <TableRow key={player}>
+                                    {sortedPlayers.map((player, index) => (
+                                        <TableRow key={player.name}>
                                             <TableCell className="font-medium text-left">{index + 1}.</TableCell>
-                                            <TableCell>{player}</TableCell>
-                                            <TableCell>{getRandomInt(12)}</TableCell>
-                                            <TableCell>{getRandomInt(8)}</TableCell>
-                                            <TableCell>{getRandomInt(40)}</TableCell>
-                                            <TableCell className="text-right">{getRandomInt(4)}</TableCell>
+                                            <TableCell>{player.name}</TableCell>
+                                            <TableCell>{player.gamesPlayed}</TableCell>
+                                            <TableCell>{player.wins}</TableCell>
+                                            <TableCell>{player.kills}</TableCell>
+                                            <TableCell className="text-right">{player.top5}</TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
                             </Table>
+                        </div>
                         </CardContent>
                     </Card>
-                </div>
-            </div>
-            <div className="flex flex-col lg:flex-row lg:items-center w-full gap-12 mt-12">
-                <div className="basis-2/3 overflow-x-auto">
-                    <Card>
-                        <CardContent>
-                            <Table>
-                                <TableHeader>
-                                    <TableRow>
-                                        <TableHead className="w-[100px] text-destructive">Pos.</TableHead>
-                                        <TableHead className="text-destructive">IGN</TableHead>
-                                        <TableHead className="text-destructive">Games Played</TableHead>
-                                        <TableHead className="text-destructive">Wins</TableHead>
-                                        <TableHead className="text-destructive">Kills</TableHead>
-                                        <TableHead className="text-right text-destructive">Top 5</TableHead>
-                                    </TableRow>
-                                </TableHeader>
-                                <TableBody>
-                                    {placeholderPlayers.map((player, index) => (
-                                        <TableRow key={player}>
-                                            <TableCell className="font-medium text-left">{index + 1}.</TableCell>
-                                            <TableCell>{player}</TableCell>
-                                            <TableCell>{getRandomInt(12)}</TableCell>
-                                            <TableCell>{getRandomInt(8)}</TableCell>
-                                            <TableCell>{getRandomInt(40)}</TableCell>
-                                            <TableCell className="text-right">{getRandomInt(4)}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </CardContent>
-                    </Card>
-                </div>
-                <div className="basis-1/3 text-left">
-                    <h2 className="text-2xl font-bold">Competition for all</h2>
-                    <br/>
-                    <p className="text-neutral-400">
-                        Leaderboards are updated automatically after each match. Compete against your friends and other players in the community.
-                    </p>
+
+                    {/* Additional Bento Box Items can go here, following the same pattern */}
                 </div>
             </div>
         </main>
