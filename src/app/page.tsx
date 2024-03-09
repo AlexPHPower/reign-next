@@ -13,16 +13,6 @@ function getRandomInt(max: number) {
 
 
 export default function Home() {
-    const placeholderPlayers: string[] = [
-        "Notice Me Senpai",
-        "Biscuit",
-        "MansNotHot",
-        "LeLouch",
-        "Oakley",
-        "Watto",
-    ];
-
-    const [players, setPlayers] = useState(placeholderPlayers.concat(["You"]));
     const [youStats, setYouStats] = useState({ gamesPlayed: 0, wins: 0, kills: 0, top5: 0 });
 
     const lastScrollY = useRef(0);
@@ -38,16 +28,15 @@ export default function Home() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const threshold = 20;
+            const threshold = 17;
 
             if (window.scrollY - lastScrollY.current > threshold) {
                 setYouStats(prevStats => {
                     const newGamesPlayed = prevStats.gamesPlayed + 1;
                     const newWins = prevStats.wins + 1;
-                    const newKills = prevStats.kills + getRandomInt(5);
+                    const newKills = prevStats.kills + getRandomInt(9);
                     const newTop5 = prevStats.top5 + 1;
 
-                    // Ensure the values do not exceed their max
                     return {
                         gamesPlayed: Math.min(newGamesPlayed, 10),
                         wins: Math.min(newWins, 10),
@@ -83,7 +72,6 @@ export default function Home() {
             </div>
             <div className="max-w-4xl mx-auto">
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* Bento Box Item 1 - Description */}
                     <Card className="col-span-1 shadow-lg shadow-secondary">
                         <CardHeader className="text-2xl font-bold text-primary text-center md:text-left">
                             Payouts you can trust
@@ -101,7 +89,6 @@ export default function Home() {
                         </CardContent>
                     </Card>
 
-                    {/* Bento Box Item 2 - Leaderboard Card */}
                     <Card className="shadow-xl shadow-secondary col-span-1 sm:col-span-2 lg:col-span-3">
                         <CardContent>
                         <div className="overflow-x-auto">
@@ -118,9 +105,9 @@ export default function Home() {
                                 </TableHeader>
                                 <TableBody>
                                     {sortedPlayers.map((player, index) => (
-                                        <TableRow key={player.name}>
+                                        <TableRow key={player.name} className={player.name === 'You' ? 'bg-secondary' : ''}>
                                             <TableCell className="font-medium text-left">{index + 1}.</TableCell>
-                                            <TableCell>{player.name}</TableCell>
+                                            <TableCell className={player.name === 'You' ? 'text-primary' : ''}>{player.name}</TableCell>
                                             <TableCell>{player.gamesPlayed}</TableCell>
                                             <TableCell>{player.wins}</TableCell>
                                             <TableCell>{player.kills}</TableCell>
@@ -132,8 +119,6 @@ export default function Home() {
                         </div>
                         </CardContent>
                     </Card>
-
-                    {/* Additional Bento Box Items can go here, following the same pattern */}
                 </div>
             </div>
         </main>
