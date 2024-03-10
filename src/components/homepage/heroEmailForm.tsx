@@ -46,14 +46,12 @@ export function HeroEmailForm() {
                     control={form.control}
                     name="email"
                     render={({ field }) => (
-                        <FormItem className="flex justify-center">
-                            <FormControl>
-                                <div className="flex w-full max-w-sm items-center space-x-2">
-                                    <Input type="email" placeholder="Email" className="rounded-l-xl" {...field} autoComplete="true" />
-                                    <Button type="submit" className="rounded-r-xl">Join Waitlist</Button>
-                                </div>
-                            </FormControl>
-                            <FormMessage />
+                        <FormItem className="flex flex-col justify-center items-center space-y-2">
+                            <div className="flex w-full max-w-sm items-center space-x-2">
+                                <Input type="email" placeholder="Email" className="rounded-l-xl" {...field} autoComplete="true" />
+                                <Button type="submit" className="rounded-r-xl">Join waitlist</Button>
+                            </div>
+                            <FormMessage/>
                         </FormItem>
                     )}
                 />
