@@ -15,7 +15,7 @@ export default function PayoutsCard() {
                         League winnings are paid out within 72 hours of the end of the league via PayPal.
                     </p>
                     <Image src="/PaypalLogo.png" alt="Paypal Logo"
-                           className="mt-8 mx-auto"
+                           className="mt-8 mx-auto w-auto h-24"
                            width={100}
                            height={24}/>
                 </div>

@@ -23,7 +23,7 @@ export default function ExampleTableCard() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const threshold = 20;
+            const threshold = 100;
 
             if (window.scrollY - lastScrollY.current > threshold) {
                 setYouStats(prevStats => {
