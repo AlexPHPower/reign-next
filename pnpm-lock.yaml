@@ -53,6 +53,9 @@ dependencies:
   react-hook-form:
     specifier: ^7.51.0
     version: 7.51.0(react@18.2.0)
+  react-parallax-tilt:
+    specifier: ^1.7.221
+    version: 1.7.221(react-dom@18.2.0)(react@18.2.0)
   recharts:
     specifier: ^2.12.2
     version: 2.12.2(react-dom@18.2.0)(react@18.2.0)
@@ -2810,6 +2813,16 @@ packages:
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
+
+  /react-parallax-tilt@1.7.221(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-B6mlbJvKtxZHQzUuXCWSSlk7wStsL/7JKC0zd78VZ62R1B/hzqdlyUJ8qFOlyA6bwHmNH6adlaFJr/TwaQx6ww==}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /react-smooth@4.0.0(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-2NMXOBY1uVUQx1jBeENGA497HK20y6CPGYL1ZnJLeoQ8rrc3UfmOM82sRxtzpcoCkUMy4CS0RGylfuVhuFjBgg==}
