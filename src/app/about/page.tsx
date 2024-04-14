@@ -33,7 +33,7 @@ export default function About() {
                             leaderboards or just improve your gameplay, Reign offers a structured environment to do so.
                         </p>
                     </CardContent>
-                    <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full w-full px-4 md:px-20">
+                    <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full w-full px-4 md:px-20 mt-4">
                         <Card className="mb-4 flex flex-col md:flex-row items-center md:items-start p-4 w-full">
                             <div className="w-full">
                                 <Tilt perspective={700}>
