@@ -7,7 +7,7 @@ import Tilt from "react-parallax-tilt";
 
 export default function About() {
     return (
-        <main className="">
+        <main>
             <div className="min-h-screen p-12 flex flex-col items-center justify-between w-full h-full">
                 <Card className="flex flex-col items-center justify-center border-transparent">
                     <CardContent className="p-4 items-center w-10/12">
@@ -19,15 +19,15 @@ export default function About() {
                         </CardHeader>
                         <p className="text-neutral-400 text-left">
                             We, the founders, felt that while Ranked games were engaging, they lacked a certain
-                            thrill—the excitement of playing for more than just points, but for prizes. There wasn't a
+                            thrill—the excitement of playing for more than just points, but for prizes. There wasn&apos;t a
                             platform where we could pay a modest monthly fee to compete in a well-organized league that
                             matched us with players of similar skill levels.
                         </p>
                         <CardHeader className="text-2xl font-bold text-center">
-                            Why We're Different
+                            Why We&apos;re Different
                         </CardHeader>
                         <p className="text-neutral-400 text-left">
-                            Reign isn't just another competitive league. It's a community where you can consistently
+                            Reign isn&apos;t just another competitive league. It&apos;s a community where you can consistently
                             measure your skills against equally matched opponents. Our league uses a subscription model,
                             making it easy to join and start competing. Whether you’re looking to dominate the
                             leaderboards or just improve your gameplay, Reign offers a structured environment to do so.
@@ -46,9 +46,9 @@ export default function About() {
                                 <p className="text-neutral-400 text-center md:text-left ml-6 mb-6">
                                     A Software Consultant whose enthusiasm for gaming matches his expertise in
                                     engineering. A die-hard fan of Apex, Path of Exile, and Quake, he brings strategic
-                                    thinking from his favorite games into every match. When he's not dominating in the
+                                    thinking from his favorite games into every match. When he&apos;s not dominating in the
                                     gaming world, you can find him whipping up delicious meals or tuning up his car.
-                                    He's a perfect blend of tech-savvy and hands-on skills.
+                                    He&apos;s a perfect blend of tech-savvy and hands-on skills.
                                 </p>
                             </div>
                         </Card>
@@ -65,7 +65,7 @@ export default function About() {
                                     <p className="text-neutral-400 text-center md:text-left ml-6 mb-6">
                                         A software engineer with a knack for strategy and competition.
                                         Whether he’s outsmarting opponents in Apex Legends, mastering tactics in
-                                        Hearthstone, or building empires in Sid Meier's Civilization, he’s always game
+                                        Hearthstone, or building empires in Sid Meier&apos;s Civilization, he&apos;s always game
                                         for a challenge. Off the virtual battlefield, he enjoys exploring new recipes
                                         and expanding his knowledge.
                                     </p>
