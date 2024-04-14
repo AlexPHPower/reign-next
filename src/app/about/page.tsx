@@ -33,9 +33,9 @@ export default function About() {
                             leaderboards or just improve your gameplay, Reign offers a structured environment to do so.
                         </p>
                     </CardContent>
-                    <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full p-20">
-                        <Card className="mb-4 flex flex-col md:flex-row items-center p-4">
-                            <div>
+                    <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full w-full px-4 md:px-20">
+                        <Card className="mb-4 flex flex-col md:flex-row items-center md:items-start p-4 w-full">
+                            <div className="w-full">
                                 <Tilt perspective={700}>
                                     <Image src="/Rick.png" alt="Rick Whalley" className="mx-auto rounded-full"
                                            width={200} height={200} priority/>
@@ -53,8 +53,8 @@ export default function About() {
                             </div>
                         </Card>
                         <Card>
-                            <CardContent className="flex flex-col md:flex-row items-center p-4">
-                                <div>
+                            <CardContent className="flex flex-col md:flex-row items-center md:items-start p-4 w-full">
+                                <div className="w-full">
                                     <Tilt perspective={700}>
                                         <Image src="/Biscuit.png" alt="Alex Power" className="mx-auto rounded-full"
                                                width={200} height={200} priority/>
