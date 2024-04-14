@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import {useState, useRef, useEffect} from "react";
+import {useState} from "react";
 
 export default function Footer() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -36,7 +36,7 @@ export default function Footer() {
                         </li>
                     </ul>
                 </div>
-                <hr className="my-6 border-primary sm:mx-auto lg:my-8" />
+                <hr className="my-6 border-primary sm:mx-auto lg:my-8"/>
             </div>
         </footer>
 

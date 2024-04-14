@@ -1,5 +1,4 @@
 import {Card, CardContent, CardHeader} from "@/components/ui/card";
-import Image from "next/image";
 import React from "react";
 
 
