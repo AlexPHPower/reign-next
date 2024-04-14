@@ -32,17 +32,17 @@ export default function Navbar() {
                 <div className="hidden lg:block lg:flex-grow">
                     <div className="text-sm lg:flex lg:justify-end lg:mr-24">
                         <div className="rounded-full border-2">
-                            <a href="/about"
+                            <a href="/"
                                className="block mt-4 lg:inline-block lg:mt-0 px-4 py-2 hover:underline underline-offset-4">
-                                About Reign
+                                Home
                             </a>
                             <a href="/about"
                                className="block mt-4 lg:inline-block lg:mt-0 px-4 py-2 hover:underline underline-offset-4">
-                                About Reign
+                                About Us
                             </a>
-                            <a href="/about"
+                            <a href="/pricing"
                                className="block mt-4 lg:inline-block lg:mt-0 px-4 py-2 hover:underline underline-offset-4">
-                                About Reign
+                                Pricing
                             </a>
                         </div>
                     </div>
